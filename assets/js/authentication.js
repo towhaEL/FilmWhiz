@@ -183,7 +183,7 @@ formContainer.classList.remove("active");
             home.classList.remove("show");
             getUserUid(user.uid);
             getFavouritesList();
-            location.reload();
+            //location.reload();
             alert('user logged in');
 
             // console.log(FavouritesList);   
