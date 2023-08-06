@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="title" content="Tvflix" />
+    <!-- primary meta tags -->
+    <meta
+      name="description"
+      content="Tvflix is a movie recommendation app made for my project work. #CAP615"
+    />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.svg" type="image/svg" />
+    <!-- Prerequisite -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- StyleSheet : CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Scripting : JS -->
+    <script src="assets/js/global.js" defer></script>
+    <script src="assets/js/detail.js" type="module"></script>
+    <script src="assets/js/app.js" type="module"></script>
+    <script src="assets/js/server.js" type="module"></script>
+    <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <a href="./index.html" class="logo">
+        <img
+          src="./assets/images/Untitled.svg"
+          alt="Tvflix Home"
+          width="200"
+          height="64"
+        />
+      </a>
+
+      <!-- <div class="auth-btn"><a class="link" id="show-favourite" href="#">Favourite</a></div> -->
+
+      <div class="search-box" search-box>
+        <div class="search-wrapper" search-wrapper>
+          <input
+            type="text"
+            name="search"
+            aria-label="search movies"
+            placeholder="Search any movies..."
+            class="search-field"
+            autocomplete="off"
+            search-field
+          />
+          <img
+            src="./assets/images/search.png"
+            alt="search"
+            class="leading-icon"
+            width="24"
+            height="24"
+          />
+        </div>
+
+        <button class="search-btn" search-toggler menu-close>
+          <img
+            src="./assets//images/close.png"
+            width="24"
+            height="24"
+            alt="open search box"
+          />
+        </button>
+      </div>
+
+      <button class="search-btn" search-toggler menu-close>
+        <img
+          src="./assets/images/search.png"
+          width="24"
+          height="24"
+          alt="open search box"
+        />
+      </button>
+
+      <button class="menu-btn" menu-btn menu-toggler>
+        <img
+          src="./assets/images/menu.png"
+          alt="open menu"
+          class="menu"
+          width="24"
+          height="24"
+        />
+        <img
+          src="./assets/images/menu-close.png"
+          alt="close menu"
+          class="close"
+          width="24"
+          height="24"
+        />
+      </button>
+
+      <div class="profileBtn">
+        <img src="assets/images/avatar/avatar7.png" class="btn-logout" onclick="toggleMenu()">
+      
+        <div class="sub-menu-wrap" id="subMenu" sub-menu-wrap></div>
+        <script>
+          // toggle profile menu
+          let subMenu = document.getElementById("subMenu");
+          function toggleMenu(){
+          subMenu.classList.toggle("open-menu");
+          }
+  
+          const userName = window.localStorage.getItem("user_name"); 
+          const sub_Menu = document.querySelector("[sub-menu-wrap]");
+          const subDetails = document.createElement("div");
+          subDetails.classList.add("sub-menu");
+          subDetails.innerHTML = `
+          <div class="user-info">
+          <img src="assets/images/avatar/avatar7.png">
+          <h3>${userName}</h3>
+          </div>
+          <hr>
+  
+          <a href="profile.html" class="sub-menu-link">
+                  <img src="assets/images/profile/profile.png">
+                  <p>Profile</p>
+                  <span>></span>
+          </a>
+          <a href="#" class="sub-menu-link" id="show-favourite" onclick="toggleMenu()">
+                  <img src="assets/images/profile/profile.png">
+                  <p>Favourites</p>
+                  <span>></span>
+          </a>
+          <a href="#" class="sub-menu-link" id="menu-logout" onclick="toggleMenu()">
+                  <img src="assets/images/profile/logout.png">
+                  <p>Logout</p>
+                  <span>></span>
+          </a>
+  `;
+  sub_Menu.appendChild(subDetails);
+        </script>
+      </div>
+
+    </header>
+    <main>
+      <!-- Sidebar -->
+      <nav class="sidebar" sidebar></nav>
+      <div class="overlay" overlay menu-toggler></div>
+      
+      <article class="container" page-content>
+        <div class="info-inner"></div>
+
+        
+        <div class="review-section">
+          <br>
+          
+          <h4 class="star-head">Click le star to add to favourites</h4>
+          <div id="star-log">
+            <svg width="42px" height="40px" viewBox="0 0 42 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <path d="M21,34 L10.4346982,39.5545079 C8.47875732,40.5828068 7.19697214,39.6450119 7.56952871,37.4728404 L9.5873218,25.7082039 L1.03981311,17.3764421 C-0.542576313,15.8339937 -0.0467737017,14.3251489 2.13421047,14.0082334 L13.946577,12.2917961 L19.2292279,1.58797623 C20.2071983,-0.393608322 21.7954064,-0.388330682 22.7707721,1.58797623 L28.053423,12.2917961 L39.8657895,14.0082334 C42.0525979,14.3259953 42.5383619,15.8381017 40.9601869,17.3764421 L32.4126782,25.7082039 L34.4304713,37.4728404 C34.8040228,39.6508126 33.5160333,40.5800681 31.5653018,39.5545079 L21,34 Z" ></path>
+            </svg>
+            
+            <h3 class="star-title" id="star-title">Added to favourites</h3>
+          </div>
+
+          <br><br><br><br>
+          <h3 class="title-large">Reviews</h3><br>
+          <div class="form-group">
+            <textarea class="form-control status-box" id="review-box" rows="2" placeholder=" Write a review"></textarea>
+          </div>
+
+          <div id="full-stars-example">
+            <!-- <p class="desc" style="margin-bottom: 2rem; font-family: sans-serif; font-size:0.9rem">Full stars<br/>'No rating' option</p> -->
+            <div class="rating-group">
+                <input class="rating__input rating__input--none" name="rating" id="rating-none" value="0" type="radio" checked>
+                <label aria-label="No rating" class="rating__label" for="rating-none"><i class="rating__icon rating__icon--none fa fa-ban"></i></label>
+  
+                <label aria-label="1 star" class="rating__label" for="rating-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                <input class="rating__input" name="rating" id="rating-1" value="1" type="radio">
+  
+                <label aria-label="2 stars" class="rating__label" for="rating-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                <input class="rating__input" name="rating" id="rating-2" value="2" type="radio">
+  
+                <label aria-label="3 stars" class="rating__label" for="rating-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                <input class="rating__input" name="rating" id="rating-3" value="3" type="radio">
+  
+                <label aria-label="4 stars" class="rating__label" for="rating-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                <input class="rating__input" name="rating" id="rating-4" value="4" type="radio">
+                
+                <label aria-label="5 stars" class="rating__label" for="rating-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                <input class="rating__input" name="rating" id="rating-5" value="5" type="radio">
+            </div>
+        </div>
+
+          <div class="button-group pull-right">
+            <!-- <a href="#" class="btn btn-primary" id="review-submit" onclick="getReviewValue()">Post</a> -->
+            <button class="btn btn-primary" id="review-submit" onclick="getReviewValue()">Post</button>
+          </div>
+
+        </div>
+
+        <div class="may-like"></div>
+      </article>
+
+      <!-- <article class="container" review-content></article> -->
+      
+    </main>
+  </body>
+</html>

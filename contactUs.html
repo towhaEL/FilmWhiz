@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="title" content="FilmWhiz" />
+    <meta
+      name="description"
+      content="FilmWhiz is a movie recommendation app made for my project work. #CAP615"
+    />
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.svg" type="image/svg" />
+    <!-- Prerequisite -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Title -->
+    <title>FilmWhiz | Home</title>
+    <!-- StyleSheet : CSS -->
+    <link rel="stylesheet" href="assets/css/landing.css" />
+    <!-- Scripting : JS -->
+    <script src="assets/js/global.js" defer></script>
+    <script src="assets/js/server.js" type="module"></script>
+    <script src="assets/js/app.js" type="module"></script>
+    <script src="assets/js/landingPage.js" type="module"></script>
+    <script src="assets/js/authentication.js" type="module"></script>
+  </head>
+  <body class="animated-background">
+        <!-- <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div> -->
+    <!-- Header -->
+    <header class="header">
+      <a href="./landingPage.html" class="logo">
+        <img
+          src="./assets/images/Untitled.svg"
+          alt="Tvflix Home"
+          width="200"
+          height="64"
+        />
+      </a>
+      <div class="header-link">
+        <a class="link" href="index.html">Home</a>
+        <a class="link" href="contactUs.html">Contact us</a>
+        <a class="link" href="#about-us">About us</a>
+        <!-- <div class="auth-btn"><a class="link" id="show-favourite" href="#">Favourite</a></div> -->
+      </div>
+      
+      </button>
+      <button class="btn-login">Sign in</button>
+      <!-- <button class="" id="sign-out"></button> -->
+      <img src="assets/images/avatar/avatar7.png" class="btn-logout" onclick="toggleMenu()">
+      
+      <div class="sub-menu-wrap" id="subMenu" sub-menu-wrap></div>
+      <script>
+        // toggle profile menu
+        let subMenu = document.getElementById("subMenu");
+        function toggleMenu(){
+        subMenu.classList.toggle("open-menu");
+        }
+
+        const userName = window.localStorage.getItem("user_name"); 
+        const sub_Menu = document.querySelector("[sub-menu-wrap]");
+        const subDetails = document.createElement("div");
+        subDetails.classList.add("sub-menu");
+        subDetails.innerHTML = `
+        <div class="user-info">
+        <img src="assets/images/avatar/avatar7.png">
+        <h3>${userName}</h3>
+        </div>
+        <hr>
+
+        <a href="profile.html" class="sub-menu-link">
+                <img src="assets/images/profile/profile.png">
+                <p>Profile</p>
+                <span>></span>
+        </a>
+        <a href="#" class="sub-menu-link" id="show-favourite" onclick="toggleMenu()">
+                <img src="assets/images/profile/profile.png">
+                <p>Favourites</p>
+                <span>></span>
+        </a>
+        <a href="#" class="sub-menu-link" id="menu-logout" onclick="toggleMenu()">
+                <img src="assets/images/profile/logout.png">
+                <p>Logout</p>
+                <span>></span>
+        </a>
+`;
+sub_Menu.appendChild(subDetails);
+      </script>
+
+    </header>
+
+    <main class="home">
+
+      
+      
+
+
+    <div class="form_container">
+              <i class="uil uil-times form_close"></i>
+              <!-- Login From -->
+              <div class="form login_form">
+                  <h2>Login</h2>
+                  <div class="input_box">
+                    <input type="email" id="login-email" placeholder="Enter your email" required />
+                    <i class="uil uil-envelope-alt email"></i>
+                  </div>
+                  <div class="input_box">
+                    <input type="password" id="login-password" placeholder="Enter your password" required />
+                    <i class="uil uil-lock password"></i>
+                    <i class="uil uil-eye-slash pw_hide"></i>
+                  </div>
+                  <div class="option_field">
+                    <span class="checkbox">
+                      <input type="checkbox" id="check" />
+                      <label for="check">Remember me</label>
+                    </span>
+                    <a href="#" class="forgot_pw" id="forgot-pw">Forgot password?</a>
+                  </div>
+                  <button class="button" id="sign-in">Login Now</button>
+                  <div class="login_signup">Don't have an account? <a href="#" id="signup">Signup</a></div>
+              </div>
+              <!-- Signup From -->
+              <div class="form signup_form">
+                  <h2>Signup</h2>
+                  <div class="input_box">
+                    <input type="text" id="user-name" placeholder="Enter your username" required />
+                    <i class="uil uil-user username"></i>
+                  </div>
+                  <div class="input_box">
+                    <input type="email" id="e-mail" placeholder="Enter your email" required />
+                    <i class="uil uil-envelope-alt email"></i>
+                  </div>
+                  <div class="input_box">
+                    <input type="password" id="pass-word" placeholder="Create password" required />
+                    <i class="uil uil-lock password"></i>
+                    <i class="uil uil-eye-slash pw_hide"></i>
+                  </div>
+                  <div class="input_box">
+                    <input type="password" id="confirm-password" placeholder="Confirm password" required />
+                    <i class="uil uil-lock password"></i>
+                    <i class="uil uil-eye-slash pw_hide"></i>
+                  </div><br>
+                  <a href="#">Choose an Avatar</a>
+                  <button class="button" id="sign-up" value="sign up">Signup Now</button>
+                  <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
+              </div>
+    </div>
+    </main>
+    <section class="about_us" id="about-us">
+      <div class="wrapper">
+        <h1>Our Team</h1>
+        <div class="team">
+          <div class="team_member">
+            <div class="team_img">
+              <img src="assets/images/tzB5NUS.png" alt="Team_image">
+            </div>
+            <h3>Ikram Rahman</h3>
+            <p class="role">1904036</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quaerat tempora, voluptatum quas facere dolorum aut cumque nihil nulla harum nemo distinctio quam blanditiis dignissimos.</p>
+          </div>
+          <div class="team_member">
+            <div class="team_img">
+              <img src="assets/images/g2GRMfV.gif" alt="Team_image">
+            </div>
+            <h3>Nayan Hossain</h3>
+            <p class="role">1904044</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quaerat tempora, voluptatum quas facere dolorum aut cumque nihil nulla harum nemo distinctio quam blanditiis dignissimos.</p></div>
+          <div class="team_member">
+            <div class="team_img">
+              <img src="assets/images/R3ZljRg.png" alt="Team_image">
+            </div>
+            <h3>Towha Elahi</h3>
+            <p class="role">1904047</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quaerat tempora, voluptatum quas facere dolorum aut cumque nihil nulla harum nemo distinctio quam blanditiis dignissimos.</p>
+          </div>
+        </div>
+      </div>
+      <a class="link" href="landingPage.html"><button>Top</button></a>
+      
+    </section>
+  </body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="title" content="FilmWhiz" />
+    <meta
+      name="description"
+      content="FilmWhiz is a movie recommendation app made for my project work. #CAP615"
+    />
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.svg" type="image/svg" />
+    <!-- Prerequisite -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Title -->
+    <title>FilmWhiz | Home</title>
+    <!-- StyleSheet : CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Scripting : JS -->
+    <script src="assets/js/global.js" defer></script>
+    <script src="assets/js/index.js" type="module"></script>
+    <!-- <script src="assets/js/app.js" type="module"></script> -->
+    <script src="assets/js/server.js" type="module"></script>
+    <script src="assets/js/authentication.js" type="module"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <a href="./landingPage.html" class="logo" id="index-logo">
+        <img
+          src="./assets/images/Untitled.svg"
+          alt="Tvflix Home"
+          width="200"
+          height="64"
+        />
+      </a>
+
+      <!-- <div class="auth-btn"><a class="link" id="show-favourite" href="#">Favourite</a></div> -->
+
+      <div class="search-box" search-box>
+        <div class="search-wrapper" search-wrapper>
+          <input
+            type="text"
+            name="search"
+            aria-label="search movies"
+            placeholder="Search any movies..."
+            class="search-field"
+            autocomplete="off"
+            search-field
+          />
+          <img
+            src="./assets/images/search.png"
+            alt="search"
+            class="leading-icon"
+            width="24"
+            height="24"
+          />
+        </div>
+
+        <button class="search-btn" search-toggler menu-close>
+          <img
+            src="./assets//images/close.png"
+            width="24"
+            height="24"
+            alt="open search box"
+          />
+        </button>
+      </div>
+
+
+      <button class="search-btn" search-toggler menu-close>
+        <img
+          src="./assets/images/search.png"
+          width="24"
+          height="24"
+          alt="open search box"
+        />
+      </button>
+      <button class="btn-login">Sign in</button>
+      <!-- <button class="btn-logout" id="sign-out">Sign out</button> -->
+      <div class="profileBtn">
+        <img src="assets/images/avatar/avatar7.png" class="btn-logout" onclick="toggleMenu()">
+      
+        <div class="sub-menu-wrap" id="subMenu" sub-menu-wrap></div>
+        <script>
+          // toggle profile menu
+          let subMenu = document.getElementById("subMenu");
+          function toggleMenu(){
+          subMenu.classList.toggle("open-menu");
+          }
+  
+          const userName = window.localStorage.getItem("user_name"); 
+          const sub_Menu = document.querySelector("[sub-menu-wrap]");
+          const subDetails = document.createElement("div");
+          subDetails.classList.add("sub-menu");
+          subDetails.innerHTML = `
+          <div class="user-info">
+          <img src="assets/images/avatar/avatar7.png">
+          <h3>${userName}</h3>
+          </div>
+          <hr>
+  
+          <a href="profile.html" class="sub-menu-link">
+                  <img src="assets/images/profile/profile.png">
+                  <p>Profile</p>
+                  <span>></span>
+          </a>
+          <a href="#" class="sub-menu-link" id="show-favourite" onclick="toggleMenu()">
+                  <img src="assets/images/profile/profile.png">
+                  <p>Favourites</p>
+                  <span>></span>
+          </a>
+          <a href="#" class="sub-menu-link" id="menu-logout" onclick="toggleMenu()">
+                  <img src="assets/images/profile/logout.png">
+                  <p>Logout</p>
+                  <span>></span>
+          </a>
+  `;
+  sub_Menu.appendChild(subDetails);
+        </script>
+      </div>
+
+      <button class="menu-btn" menu-btn menu-toggler>
+        <img
+          src="./assets/images/menu.png"
+          alt="open menu"
+          class="menu"
+          width="24"
+          height="24"
+        />
+        <img
+          src="./assets/images/menu-close.png"
+          alt="close menu"
+          class="close"
+          width="24"
+          height="24"
+        />
+      </button>
+    </header>
+    
+    <main class="home">
+      <div class="form_container">
+        <i class="uil uil-times form_close"></i>
+        <!-- Login From -->
+        <div class="form login_form">
+            <h2>Login</h2>
+            <div class="input_box">
+              <input type="email" id="login-email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" id="login-password" placeholder="Enter your password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <div class="option_field">
+              <span class="checkbox">
+                <input type="checkbox" id="check" />
+                <label for="check">Remember me</label>
+              </span>
+              <a href="#" class="forgot_pw" id="forgot-pw">Forgot password?</a>
+            </div>
+            <button class="button" id="sign-in">Login Now</button>
+            <div class="login_signup">Don't have an account? <a href="#" id="signup">Signup</a></div>
+        </div>
+        <!-- Signup From -->
+        <div class="form signup_form">
+            <h2>Signup</h2>
+            <div class="input_box">
+              <input type="text" id="user-name" placeholder="Enter your username" required />
+              <i class="uil uil-user username"></i>
+            </div>
+            <div class="input_box">
+              <input type="email" id="e-mail" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" id="pass-word" placeholder="Create password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" id="confirm-password" placeholder="Confirm password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <button class="button" id="sign-up" value="sign up">Signup Now</button>
+            <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
+        </div>
+      </div>
+      <!-- Sidebar -->
+      <nav class="sidebar" sidebar></nav>
+      <div class="overlay" overlay menu-toggler></div>
+
+      <article class="container" page-content></article>
+    </main>
+  </body>
+</html>
