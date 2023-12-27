@@ -1,6 +1,6 @@
-# Tvflix 🎞
+# FilmWhiz 🎞
 
-![image](https://github.com/Shivam171/Tvflix/assets/66107248/cc368a2b-23d8-4568-b4fe-7c36fe8a62c3)
+![image](https://github.com/towhaEL/towhaEL.github.io/blob/main/assets/images/page.png)
 
 ## About this repo
 
@@ -13,9 +13,6 @@ This project Template can be used to build bigger projects
 
 ## Live Application URL
 
-### https://tvflix-shivam171.netlify.app/
+### https://luxury-otter-162a12.netlify.app/landingpage
 This URL has the application deployed in Netlify
 
-## Contributing
-
-Contributions are welcome! If you encounter any bugs or have suggestions for new features, please open an issue or submit a pull request.
